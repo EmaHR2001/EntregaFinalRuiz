@@ -1,26 +1,19 @@
 import './Navbar.css';
+import { Link } from "react-router-dom"
 
 function Navbar() {
     return (
         <header>
             <nav className="navbar">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
-                        CosmicBook
-                    </a>
+                    <Link to={`/`} className='inicio_btn'>CosmicBook</Link>
                 </div>
                 <div className="navbar-menu">
-                    <div className="navbar-start">
-                        <a className="navbar-item" href="/">
-                            Inicio
-                        </a>
-                        <a className="navbar-item" href="/">
-                            Preguntas Frecuentes
-                        </a>
-                        <a className="navbar-item" href="/">
-                            Contacto
-                        </a>
-                    </div>
+                    <Link to={`/preguntas-frecuentes`} className='section_btn'>Preguntas Frecuentes</Link>
+                    <Link to={`/contacto`} className='section_btn'>Contacto</Link>
+                </div>
+                <div>
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </div>
             </nav>
         </header>

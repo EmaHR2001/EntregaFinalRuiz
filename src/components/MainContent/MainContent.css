@@ -1,9 +1,0 @@
-.main-container {
-    display: grid;
-    grid-template-columns: 80% 20%;
-}
-
-.cards-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
