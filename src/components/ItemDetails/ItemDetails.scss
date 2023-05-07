@@ -1,0 +1,44 @@
+.details-container{
+    display: flex;
+
+    img {
+        padding: 20px;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        h2 {
+            margin: 0;
+            color: red;
+        }
+
+        .options-buttons {
+            .option-button {
+                position: relative;
+                font-size: 1.3rem;
+                margin-right: 10px;
+                padding: 0 20px 5px;
+                border-radius: 15px;
+                border: 1px solid black;
+
+                p {
+                    font-size: .8rem;
+                }
+
+                span {
+                    display: block;
+                }
+            }
+
+            .selected {
+                background-color: black;
+                color: white;
+                
+            }
+        }
+
+    }
+}

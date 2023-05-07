@@ -1,0 +1,115 @@
+.itemlistcontainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin: 20px;
+}
+
+.itemlist-container {
+    margin: 0px 20px;
+
+    .itemlist-title {
+        display: inline-block;
+        color: white;
+        margin-bottom: 0;
+        padding: 5px;
+        background-color: red;
+    }
+
+    .item-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+    color: white;
+    margin: 3px;
+
+    &__img {
+        width: 200px;
+        height: 290px;
+        margin-bottom: 10px;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    &__autor {
+        color: gray;
+        margin: 0;
+    }
+
+    &__price {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    &__category {
+        display: flex;
+
+        .category {
+            margin: 5px;
+            padding: 5px;
+            color: white;
+            background-color: #363636;
+            border-radius: 5px;
+        }
+    }
+
+    &__btn {
+        padding: 5px 10px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: red;
+    }
+}
+
+/* .card {
+    text-align: center;
+    padding: 10px 5px 5px;
+    height: 480px;
+    border: 0.5px solid rgb(179, 179, 179);
+}
+
+.card__img {
+    width: 150px;
+    height: 250px;
+    margin-bottom: 10px;
+}
+
+.card__title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.card__autor {
+    color: gray;
+    margin: 5px;
+}
+
+.card__price {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.card__btn {
+    padding: 5px 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: red;
+}
+
+.card__btn:hover {
+    color: white;
+    background-color: red;
+    border: none;
+} */

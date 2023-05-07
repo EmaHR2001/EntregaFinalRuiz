@@ -1,9 +1,11 @@
-import './ItemListContainer.css';
-import BookCard from '../BookCard/BookCard';
-import MOCK_DATA from '../../data/MOCK_DATA.json';
+import './ItemListContainer.scss';
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
+import ListCategory from '../ListCategory/ListCategory';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+import ItemList from '../ItemList/ItemList';
+import ItemListLoader from '../ItemListLoader/ItemListLoader';
 
 const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
@@ -13,57 +15,33 @@ const ItemListContainer = () => {
     useEffect(() => {
         setLoading(true)
 
-        const pedirDatos = () => {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve(MOCK_DATA)
-                }, 1500)
-            })
-        }
+        const productosRef = collection(db, "productos")
+        const q = categoryId
+            ? query(productosRef, where("category", "array-contains", categoryId))
+            : productosRef
 
-        pedirDatos()
+        getDocs(q)
             .then((res) => {
-                if (categoryId) {
-                    setProductos(res.filter((prod) => prod.category === categoryId))
-                } else {
-                    setProductos(res)
-                }
+                setProductos(res.docs.map((doc) => {
+                    return {
+                        id: doc.id,
+                        ...doc.data()
+                    }
+                }))
             })
-            .catch((error) => {
-                console.log(error)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+            .finally(() => setLoading(false))
+
     }, [categoryId])
 
     return (
-        <main className='inicio-container'>
-            <div className="list-container">
-                <h2 className="list-container__title">Categorías</h2>
-                <div className='buttons-category'>
-                    <Link to={`/productos/`} className='category_btn'>Todas</Link>
-                    <Link to={`/productos/Ciencia-Ficcion`} className='category_btn'>Ciencia Ficción</Link>
-                    <Link to={`/productos/Fantasia`} className='category_btn'>Fantasía</Link>
-                    <Link to={`/productos/Historia`} className='category_btn'>Historia</Link>
-                    <Link to={`/productos/Romance`} className='category_btn'>Romance</Link>
-                    <Link to={`/productos/Ciencia`} className='category_btn'>Ciencia</Link>
-                    <Link to={`/productos/Cocina`} className='category_btn'>Cocina</Link>
-                    <Link to={`/productos/Terror`} className='category_btn'>Terror</Link>
-                </div>
-            </div>
-            <div className=''>
-                <div className='cards-container'>
-                    {
-                        loading
-                            ? Array.from({ length: 20 }, (_, i) => (
-                                <div key={i} className='card'>
-                                    <p>Cargando...</p>
-                                </div>
-                            ))
-                            : productos.map((producto) => <BookCard key={producto.id} item={producto} />)
-                    }
-                </div>
+        <main className='itemlistcontainer'>
+            <ListCategory />
+            <div className="itemlist-container">
+                <h2 className="itemlist-title">Productos</h2>
+                {loading
+                    ? <ItemListLoader/>
+                    : <ItemList items={productos}/>
+                }
             </div>
         </main>
     );

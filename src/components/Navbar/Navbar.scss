@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2a2a2a;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    height: 40px;
+}
+
+.link {
+    text-decoration: none;
+
+    &__inicio {
+        color: #ffab00;
+        font-size: 2rem;
+    }
+
+    &__enlace {
+        color: white;
+        margin-right: 20px;
+        &:hover {
+            color: #ffab00;
+        }
+    }
+}
+
+.nav__logged {
+    display: flex;
+    align-items: center;
+    h6 {
+        color: white;
+        margin-right: 10px;
+    }
+    .btn {
+        padding: 10px 20px;
+        height: 100%;
+    }
+}
