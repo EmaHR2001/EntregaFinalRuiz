@@ -1,4 +1,4 @@
-const ItemCount = ({stock, cantidad, setCantidad, agregar}) => {
+const ItemCount = ({ stock, cantidad, setCantidad, agregar }) => {
 
     const handleRestar = () => {
         cantidad > 1 && setCantidad(cantidad - 1)
@@ -9,30 +9,32 @@ const ItemCount = ({stock, cantidad, setCantidad, agregar}) => {
     }
 
     return (
-        <div>
-            <button 
-                onClick={handleRestar} 
-                className={`btn 
-                ${cantidad === 1 ? 'minimo' : ''} 
-                ${cantidad === 1 ? 'btn-outline-danger' : 'btn-outline-primary'}`}
-                disabled={cantidad === 1 || stock === 0}
-            >
-                -
-            </button>
+        <div className='itemcount'>
+            <div className='accountant'>
+                <div className='accountant__container'>
+                    <button
+                        onClick={handleRestar}
+                        className={cantidad === 1 ? 'count count-danger' : 'count count-primary'}
+                        disabled={cantidad === 1 || stock === 0}
+                    >
+                        -
+                    </button>
 
-            <span className="mx-3">{cantidad}</span>
+                    <span className="number">{cantidad}</span>
 
-            <button 
-                onClick={handleSumar} 
-                className={cantidad === stock ? "btn btn-danger" : "btn btn-primary"}
-                disabled={cantidad === stock || stock === 0}
-            >
-                +
-            </button>
-
-            <br/>
-
-            <button disabled={stock === 0} onClick={agregar} className="btn btn-success">Agregar al carrito</button>
+                    <button
+                        onClick={handleSumar}
+                        className={cantidad === stock ? "count count-danger" : "count count-primary"}
+                        disabled={cantidad === stock || stock === 0}
+                    >
+                        +
+                    </button>
+                </div>
+                <p className='stock'>Stocks: {stock}</p>
+            </div>
+            <div className='accountant__btn'>
+                <button disabled={stock === 0} onClick={agregar} className="btn">Agregar al carrito</button>
+            </div>
         </div>
     )
 }

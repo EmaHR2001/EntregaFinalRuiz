@@ -7,14 +7,6 @@
 .itemlist-container {
     margin: 0px 20px;
 
-    .itemlist-title {
-        display: inline-block;
-        color: white;
-        margin-bottom: 0;
-        padding: 5px;
-        background-color: red;
-    }
-
     .item-list {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -29,14 +21,20 @@
     margin: 3px;
 
     &__img {
-        width: 200px;
-        height: 290px;
+        width: 180px;
+        height: 270px;
         margin-bottom: 10px;
+    }
+
+    &__format {
+        margin: 0;
+        color: #505050;
+        font-size: 1rem;
     }
 
     &__title {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 
     &__autor {
@@ -62,54 +60,85 @@
     }
 
     &__btn {
+        margin: 0 5px;
+        text-align: center;
         padding: 5px 10px;
         border: 1px solid gray;
         border-radius: 10px;
         text-decoration: none;
         font-size: 1.2rem;
-        color: red;
+        background-color: white;
+        color: black;
+
+        &:hover {
+            color: white;
+            background-color: #1b1b1b;
+        }
     }
 }
 
-/* .card {
-    text-align: center;
-    padding: 10px 5px 5px;
-    height: 480px;
-    border: 0.5px solid rgb(179, 179, 179);
+.category-list {
+
+    &__title {
+        margin: 0;
+        padding: 5px;
+        color: white;
+    }
+
+    .buttons-category {
+        display: flex;
+        flex-direction: column;
+
+        .category_btn {
+            text-decoration: none;
+            color: white;
+            padding: 5px;
+            border: 1px solid #363636;
+
+            &:hover {
+                background-color: #181818;
+            }
+
+            &.active {
+                background-color: #181818;
+            }
+        }
+    }
 }
 
-.card__img {
-    width: 150px;
-    height: 250px;
-    margin-bottom: 10px;
+.loader-card {
+    margin: 10px;
+    .loader {
+        background-color: #222222;
+        animation: pulse 1s ease-in-out infinite;
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        &_one {
+            height: 300px;
+        }
+        &_two {
+            height: 30px;
+        }
+        &_three {
+            height: 120px;
+        }
+        &_four {
+            height: 50px;
+        }
+    }
 }
 
-.card__title {
-    font-size: 1.2rem;
-    margin: 0;
-}
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
 
-.card__autor {
-    color: gray;
-    margin: 5px;
-}
+    50% {
+        opacity: 0.5;
+    }
 
-.card__price {
-    font-size: 2rem;
-    margin: 0;
+    100% {
+        opacity: 1;
+    }
 }
-
-.card__btn {
-    padding: 5px 10px;
-    border: 1px solid gray;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: red;
-}
-
-.card__btn:hover {
-    color: white;
-    background-color: red;
-    border: none;
-} */

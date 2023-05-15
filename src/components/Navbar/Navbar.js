@@ -5,7 +5,7 @@ import { LoginContext } from '../../context/LoginContext';
 import { CartContext } from '../../context/CartContext'
 
 function Navbar() {
-    const { totalCantidad, cart } = useContext(CartContext)
+    const { totalCantidad } = useContext(CartContext)
     const { user, logout } = useContext(LoginContext)
 
     return (
@@ -16,21 +16,29 @@ function Navbar() {
                 </div>
                 <div className="navbar-menu">
                     <Link to={`/preguntas-frecuentes`} className='link link__enlace'>Preguntas Frecuentes</Link>
-                    <Link to={`/contacto`} className='link link__enlace'>Contacto</Link>
                 </div>
                 {user.logged === true ?
                     <div className="nav__logged">
-                        <h6>Bienvenido: {user.email}</h6>
-                        <button className='btn btn-logout' onClick={logout}>Logout</button>
-                        <Link to="/cart" className="">
-                            <i className="fa-solid fa-cart-shopping"></i>
+
+                        <div className='user'>
+                            <div className='user__name'>
+                                <i className="fa-solid fa-user"></i>
+                                <h6>{user.name}</h6>
+                            </div>
+                            <div className='user__options'>
+                                <Link to="/orders" className="options">Tus pedidos</Link>
+                                <button className='options' onClick={logout}>Cerrar Sesión</button>
+                            </div>
+                        </div>
+
+                        <Link to="/cart" className="link-cart">
+                            <p>Ir al Carrito</p>
                             <span>{totalCantidad()}</span>
                         </Link>
                     </div>
                     :
-                    <div>
-                        <Link to={`/login`} className='link link__user'>Iniciar Sesión</Link>
-                        <Link to={`/register`} className='link link__user'>Registrarse</Link>
+                    <div className="nav__logged">
+                        <Link to={`/login`} className="link-cart">Iniciar Sesión</Link>
                     </div>
                 }
             </nav>

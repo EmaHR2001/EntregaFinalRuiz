@@ -10,8 +10,11 @@ const Item = ({ item }) => {
     return (
         <div className='card' >
             <img className='card__img' src={item.image} alt="imagen" />
-            <h3 className='card__title'>{item.title}</h3>
-            <h4 className="card__autor">{item.autor}</h4>
+            <div className="card__info">
+                <h3 className="card__format">{item.format}</h3>
+                <h3 className='card__title'>{item.title}</h3>
+                <h4 className="card__autor">{item.autor}</h4>
+            </div>
             <p className="card__price">${item.price}</p>
             <div className="card__category">
                 {elementosCat}

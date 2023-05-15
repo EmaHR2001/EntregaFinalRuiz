@@ -1,49 +1,64 @@
 import { createContext, useEffect, useState } from "react";
-import { signInWithPopup, onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { auth, provider } from "../firebase/config";
+import { onAuthStateChanged, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
+import { auth, db } from "../firebase/config";
+import { doc, setDoc, collection, getDoc } from "firebase/firestore";
 
 
 export const LoginContext = createContext()
 
 
-export const LoginProvider = ({children}) => {
+export const LoginProvider = ({ children }) => {
     const [user, setUser] = useState({
+        name: null,
         email: null,
+        uid: null,
         logged: false
     })
 
     const register = (values) => {
         createUserWithEmailAndPassword(auth, values.email, values.password)
+            .then((userCredential) => {
+                const userUid = userCredential.user.uid;
+                const userData = collection(db, 'usersData');
+                const docRef = doc(userData, userUid);
+                return setDoc(docRef, {
+                    name: `${values.name} ${values.lastName}`,
+                    cart: [],
+                    orders: []
+                });
+            })
             .catch((err) => console.log(err))
-    }//cambiar el console por un alert
+    }
 
     const login = (values) => {
         signInWithEmailAndPassword(auth, values.email, values.password)
             .catch((err) => console.log(err))
     }
 
-    const googleLogin = () => {
-        signInWithPopup(auth, provider)
-    }
-
     const logout = () => {
-        signOut(auth)
-            .then(() => {
-                setUser({
-                    email: null,
-                    logged: false
-                })
-            })
+        signOut(auth).then(() => {
+            setUser({
+                name: null,
+                email: null,
+                logged: false,
+                uid: null
+            });
+        });
+    };
 
-    }
-    
     useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             if (user) {
-                setUser({
-                    email: user.email,
-                    logged: true
-                })
+                const userRef = doc(db, "usersData", user.uid);
+                const userDoc = await getDoc(userRef);
+                if (userDoc.exists()) {
+                    setUser({
+                        name: userDoc.data().name,
+                        email: user.email,
+                        logged: true,
+                        uid: user.uid
+                    });
+                }
             } else {
                 logout()
             }
@@ -55,8 +70,7 @@ export const LoginProvider = ({children}) => {
             user,
             login,
             logout,
-            register,
-            googleLogin
+            register
         }}>
             {children}
         </LoginContext.Provider>

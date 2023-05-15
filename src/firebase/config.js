@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider } from "firebase/auth"
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCnAEwu03P1NtdDtGQxAmCEpitIfj-e_Go",
@@ -16,5 +16,15 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app)
+export const dbCollection = collection;
+export const dbAddDoc = addDoc;
 export const auth = getAuth(app)
-export const provider = new GoogleAuthProvider()
+
+/* const nuevaColeccionRef = collection(db, "nuevaColeccion");
+addDoc(nuevaColeccionRef, {nombre: "Ejemplo"})
+  .then((docRef) => {
+    console.log("Documento agregado con ID:", docRef.id);
+  })
+  .catch((error) => {
+    console.error("Error al agregar el documento:", error);
+  }); */

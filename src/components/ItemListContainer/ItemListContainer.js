@@ -37,7 +37,6 @@ const ItemListContainer = () => {
         <main className='itemlistcontainer'>
             <ListCategory />
             <div className="itemlist-container">
-                <h2 className="itemlist-title">Productos</h2>
                 {loading
                     ? <ItemListLoader/>
                     : <ItemList items={productos}/>

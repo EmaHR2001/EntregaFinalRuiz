@@ -4,7 +4,7 @@ import './LoginScreen.scss'
 import { Link } from 'react-router-dom'
 
 const LoginScreen = () => {
-    const { login, googleLogin } = useContext(LoginContext)
+    const { login } = useContext(LoginContext)
 
     const [values, setValues] = useState({
         email: '',
@@ -27,32 +27,30 @@ const LoginScreen = () => {
     return (
         <div className="login-container">
             <div className="login">
-                <h2>Login</h2>
-                <hr/>
+                <h2>Inicia Sesión</h2>
 
-                <form onSubmit={handleSubmit}>
-                    <input 
+                <form className="form" onSubmit={handleSubmit}>
+                    <input
                         onChange={handleChange}
                         name="email"
                         value={values.email}
                         type={'email'}
-                        className="form-control my-2"
+                        className="form__input"
                         placeholder='Tu email'
                     />
 
-                    <input 
+                    <input
                         name="password"
                         value={values.password}
                         onChange={handleChange}
                         type={'password'}
-                        className="form-control my-2"
+                        className="form__input"
                         placeholder='Contraseña'
                     />
 
-                    <button className='btn btn-primary' type='submit'>Ingresar</button>
-                    <Link to={"/register"}>Registrarme</Link>
+                    <Link className="form__quest" to={"/register"}>¿Aun no tienes una cuenta?</Link>
+                    <button className='form__btn' type='submit'>Ingresar</button>
                 </form>
-                <button className='btn btn-outline-primary' onClick={googleLogin}>Ingresar con google</button>
             </div>
         </div>
     )

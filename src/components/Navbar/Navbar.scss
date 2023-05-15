@@ -3,37 +3,120 @@
     justify-content: space-between;
     background-color: #2a2a2a;
     align-items: center;
-    padding: 10px;
     font-size: 18px;
-    height: 40px;
+    height: 50px;
 }
 
 .link {
     text-decoration: none;
 
     &__inicio {
-        color: #ffab00;
+        color: #ffffff;
         font-size: 2rem;
+        font-weight: bolder;
+        margin-left: 20px;
+
+        &:hover {
+            color: #0078f2;
+        }
     }
 
     &__enlace {
         color: white;
         margin-right: 20px;
+        font-weight: bold;
+
         &:hover {
-            color: #ffab00;
+            color: #0078f2;
         }
     }
 }
 
 .nav__logged {
     display: flex;
-    align-items: center;
-    h6 {
-        color: white;
-        margin-right: 10px;
+    height: 100%;
+
+    .user {
+        display: flex;
+        position: relative;
+
+        .user__name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-right: 15px;
+
+            i {
+                font-size: 1.5rem;
+                margin-right: 10px;
+            }
+        }
+
+        &__options {
+            display: none;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            bottom: -100%;
+            text-align: center;
+
+            .options {
+                color: white;
+                background-color: #2a2a2a;
+                width: 100%;
+                display: block;
+                height: 50%;
+                font-size: 1rem;
+                font-weight: initial;
+                border: none;
+                text-decoration: none;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #3f3f3f;
+                }
+            }
+        }
+
+        &:hover {
+            .user__options {
+                display: block;
+            }
+        }
     }
-    .btn {
-        padding: 10px 20px;
-        height: 100%;
+
+    .link-cart {
+        display: flex;
+        padding: 2px 20px;
+        color: white;
+        text-decoration: none;
+        background-color: #0078f2;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        p {
+            font-size: .9rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            margin-left: 5px;
+            color: #0078f2;
+            background-color: #fff;
+            border-radius: 100%;
+            font-size: 1.5rem;
+        }
+
+        &:hover {
+            background-color: #1a8afa;
+        }
     }
 }

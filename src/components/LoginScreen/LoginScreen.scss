@@ -1,15 +1,59 @@
 .login-container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
-    background-color: darkcyan;
+    background-color: #121212;
+    top: 0;
 
     .login {
-        width: 500px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 20px;
+        width: 400px;
+        padding: 50px;
+        background-color: #202020;
+        color: white;
+        text-align: center;
+
+        h2 {
+            padding-bottom: 10px;
+            margin: 0px 0px 20px;
+        }
+
+        .form {
+            &__input {
+                display: block;
+                width: 100%;
+                height: 40px;
+                background-color: #202020;
+                border: 1px solid white;
+                border-radius: 5px;
+                margin: 20px 0px;
+                font-size: 1rem;
+                padding: 10px;
+                color: white;
+            }
+
+            &__quest {
+                color: white;
+            }
+
+            &__btn {
+                display: block;
+                color: white;
+                font-size: 1rem;
+                cursor: pointer;
+                border: none;
+                border-radius: 5px;
+                margin: auto;
+                margin-top: 30px;
+                padding: 20px 100px;
+                background-color: #0078f2;
+
+                &:hover {
+                    background-color: #1a8afa;
+                }
+            }
+        }
     }
 }

@@ -1,10 +1,10 @@
 const ItemListLoader = () => {
     const cartLoader = Array.from({ length: 10 }, (_, index) => (
-        <div key={index} className='card'>
-            <img className='card__img' src="" alt="imagen" />
-            <h3 className='card__title'>cargando</h3>
-            <h4 className="card__autor">cargando</h4>
-            <p className="card__price">cargando</p>
+        <div key={index} className='loader-card'>
+            <div className="loader loader_one"></div>
+            <div className="loader loader_two"></div>
+            <div className="loader loader_three"></div>
+            <div className="loader loader_four"></div>
         </div>
     ))
 

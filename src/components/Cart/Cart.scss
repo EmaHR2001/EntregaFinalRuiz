@@ -1,0 +1,124 @@
+.cart-container {
+    color: white;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+    .cart-products {
+
+        &__item {
+            display: flex;
+            margin-bottom: 20px;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 10px;
+
+            img {
+                width: 200px;
+            }
+        }
+        &__info {
+            width: 100%;
+            margin-left: 20px;
+            position: relative;
+
+            h4 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            h5 {
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .buttons {
+                display: flex;
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+
+                p {
+                    position: absolute;
+                    top: -30px;
+                    margin-left: 5px;
+                }
+
+                h3 {
+                    font-size: 2.4rem;
+                    margin: 0;
+                }
+
+                i {
+                    font-size: 1.5rem;
+                    margin-right: 10px;
+                }
+            }
+
+            .btn {
+                margin: 0;
+            }
+        }
+    }
+
+    .list {
+        margin-left: 10px;
+        text-align: center;
+        background-color: #222;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+        border: 1px solid #ffffff5d;
+
+        h2 {
+            background-color: #161616;
+            padding: 10px;
+            margin: 0;
+        }
+
+        &__cart {
+            display: grid;
+            grid-template-columns: 50% 10% 40%;
+            padding: 0px 20px;
+            border-bottom: 1px solid #ffffff5d;
+
+            p {
+                font-size: 1.1rem;
+            }
+        }
+
+        &__buttons {
+            display: flex;
+            justify-content: center;
+
+            .list-btn {
+                border: none;
+                background-color: #0078f2;
+                padding: 20px;
+                font-size: 1.1rem;
+                color: white;
+                text-decoration: none;
+                margin: 10px;
+                width: 40%;
+                border-radius: 10px;
+            }
+        }
+    }
+
+}
+
+.noitem-alert {
+    background-color: #222;
+    margin: 50px auto;
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+
+    h2 {
+        color: white;
+    }
+}

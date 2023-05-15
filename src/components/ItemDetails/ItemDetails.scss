@@ -1,44 +1,158 @@
-.details-container{
+.details-container {
     display: flex;
-
-    img {
-        padding: 20px;
-    }
+    margin: 20px;
+    height: 550px;
 
     .details {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 20px;
-        h2 {
-            margin: 0;
-            color: red;
+        color: white;
+        padding: 0px 5px;
+        padding: 10px;
+
+        &__img {
+            img {
+                height: 100%;
+            }
         }
 
-        .options-buttons {
-            .option-button {
-                position: relative;
-                font-size: 1.3rem;
+        &__info {
+            width: 700px;
+            h2 {
+                font-size: 3rem;
+                margin: 0;
+            }
+
+            h3 {
+                margin: 0;
+            }
+        }
+
+        &__buy {
+            background-color: #242424;
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            width: 500px;
+
+            .buy {
+
+                &__price {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-bottom: 10px;
+
+                    h3 {
+                        margin: 0;
+                        font-size: 3rem;
+                    }
+                }
+
+                &__info {
+                    i {
+                        margin-right: 10px;
+                        font-size: 2rem
+                    }
+
+                    span {
+                        font-weight: bold;
+                    }
+
+                    .envio {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .local {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    border-top: 1px solid white;
+                    border-bottom: 1px solid white;
+                }
+
+            }
+
+            .no-stock {
+                text-align: center;
+            }
+        }
+
+        .category__container {
+            display: flex;
+
+            .category {
+                background-color: #242424;
+                font-weight: bold;
                 margin-right: 10px;
-                padding: 0 20px 5px;
-                border-radius: 15px;
-                border: 1px solid black;
+                padding: 10px;
+                border-radius: 10px;
+            }
+        }
+    }
+}
 
-                p {
-                    font-size: .8rem;
+.btn {
+    display: flex;
+    background-color: #0078f2;
+    text-decoration: none;
+    border: none;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 80px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 30px;
+
+    &:hover {
+        background-color: #1a8afa;
+    }
+}
+
+.itemcount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .accountant {
+        margin-top: 20px;
+        .accountant__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 250px;
+            background-color: #2c2c2c;
+            .count {
+                padding: 20px;
+                border: none;
+                background-color: #0078f2;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #1a8afa;
                 }
-
-                span {
-                    display: block;
+                &:disabled {
+                    background-color: #464646;
+                    cursor: auto;
                 }
             }
-
-            .selected {
-                background-color: black;
-                color: white;
-                
+            .number {
+                font-size: 1.5rem;
             }
         }
 
+        .stock {
+            text-align: center;
+            margin-bottom: 0;
+        }
     }
 }

@@ -6,6 +6,8 @@ const RegisterScreen = () => {
     const { register } = useContext(LoginContext)
 
     const [values, setValues] = useState({
+        name: '',
+        lastName: '',
         email: '',
         password: ''
     })
@@ -19,36 +21,53 @@ const RegisterScreen = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        register(values)
+        register({ ...values });
     }
 
     return (
         <div className="login-container">
             <div className="login">
                 <h2>Registrarme</h2>
-                <hr/>
 
-                <form onSubmit={handleSubmit}>
-                    <input 
+                <form className='form' onSubmit={handleSubmit}>
+                    <input
+                        onChange={handleChange}
+                        name="name"
+                        value={values.name}
+                        type={'text'}
+                        className="form__input"
+                        placeholder='Primer nombre'
+                    />
+
+                    <input
+                        onChange={handleChange}
+                        name="lastName"
+                        value={values.lastName}
+                        type={'text'}
+                        className="form__input"
+                        placeholder='Segundo nombre'
+                    />
+
+                    <input
                         onChange={handleChange}
                         name="email"
                         value={values.email}
                         type={'email'}
-                        className="form-control my-2"
-                        placeholder='Tu email'
+                        className="form__input"
+                        placeholder='Ingresar email'
                     />
 
-                    <input 
+                    <input
                         name="password"
                         value={values.password}
                         onChange={handleChange}
                         type={'password'}
-                        className="form-control my-2"
-                        placeholder='Contraseña'
+                        className="form__input"
+                        placeholder='Crear contraseña'
                     />
 
-                    <button className='btn btn-primary' type='submit'>Registrarme</button>
-                    <Link to={"/login"}>Ya estoy registrado</Link>
+                    <Link className='form__quest' to={"/login"}>¿Ya tienes una cuenta?</Link>
+                    <button className='form__btn' type='submit'>Registrarme</button>
                 </form>
             </div>
         </div>
