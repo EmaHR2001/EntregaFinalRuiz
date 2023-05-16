@@ -9,11 +9,11 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
-    nombre: Yup.string()
+    name: Yup.string()
         .required("Este campo es requerido")
         .min(3, "Mínimo 3 caracteres")
         .max(30, "Máximo 30 caracteres"),
-    direccion: Yup.string()
+    direction: Yup.string()
         .required("Este campo es requerido")
         .min(6, "Mínimo 6 caracteres")
         .max(30, "Máximo 30 caracteres"),
@@ -128,49 +128,55 @@ const Checkout = () => {
                 <Formik
                     validationSchema={schema}
                     initialValues={{
-                        nombre: user.name,
-                        direccion: '',
+                        name: user.name,
+                        direction: '',
                         email: user.email
                     }}
                     onSubmit={generarOrden}
                 >
                     {({ values, errors, handleChange, handleSubmit }) => (
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                value={values.nombre}
-                                type="text"
-                                className="check-input"
-                                placeholder="Tu nombre"
-                                onChange={handleChange}
-                                name="nombre"
-                            />
-                            {errors.nombre && <p style={{ color: 'red' }}>{errors.nombre}</p>}
+                        <form className="form" onSubmit={handleSubmit}>
 
-                            <input
-                                value={values.direccion}
-                                type="text"
-                                className="check-input"
-                                placeholder="Tu direccion"
-                                name="direccion"
-                                onChange={handleChange}
-                            />
-                            {errors.direccion && <p style={{ color: 'red' }}>{errors.direccion}</p>}
+                            <div className='input-container'>
+                                <input
+                                    onChange={handleChange}
+                                    name="name"
+                                    value={values.name}
+                                    type='text'
+                                    className="form__input"
+                                    placeholder='Tu nombre'
+                                />
+                                {errors.name && <p className='error-alert'>{errors.name}</p>}
+                            </div>
 
-                            <input
-                                value={values.email}
-                                type="email"
-                                className="check-input"
-                                placeholder="Tu email"
-                                name="email"
-                                onChange={handleChange}
-                            />
-                            {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+                            <div className='input-container'>
+                                <input
+                                    onChange={handleChange}
+                                    name="direction"
+                                    value={values.direction}
+                                    type='text'
+                                    className="form__input"
+                                    placeholder='Tu dirección'
+                                />
+                                {errors.direction && <p className='error-alert'>{errors.direction}</p>}
+                            </div>
+
+                            <div className='input-container'>
+                                <input
+                                    onChange={handleChange}
+                                    name="email"
+                                    value={values.email}
+                                    type='email'
+                                    className="form__input"
+                                    placeholder='Ingresar email'
+                                />
+                                {errors.email && <p className='error-alert'>{errors.email}</p>}
+                            </div>
 
 
-                            <button className="btn btn-primary" type="submit">Enviar</button>
+                            <button className='form__btn' type='submit'>Enviar</button>
                         </form>)}
                 </Formik>
-
 
             </div>
         </div>
