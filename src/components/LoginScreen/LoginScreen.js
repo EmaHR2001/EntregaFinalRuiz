@@ -62,7 +62,7 @@ const LoginScreen = () => {
                                 {errors.password && <p className='error-alert'>{errors.password}</p>}
                             </div>
 
-                            <Link className='form__quest' to={"/login"}>¿Aun no tienes una cuenta?</Link>
+                            <Link className='form__quest' to={"/register"}>¿Aun no tienes una cuenta?</Link>
                             <button className='form__btn' type='submit'>Ingresar</button>
                         </form>
                     )}
